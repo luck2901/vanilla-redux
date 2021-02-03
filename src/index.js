@@ -1,22 +1,21 @@
+import {createStore} from 'redux'
+
 const add = document.getElementById("Add_but");
 const minus = document.getElementById("Minus_but");
 const num = document.querySelector("span");
 
-let counter = 0;
+const reducer = (count = 0, action) =>{
+  if (action.type ==="ADD"){
+    count++;
+  }
+  if (action.type ==="MINUS"){
+    count--;
+  }
+  return count;
+};
 
-num.innerText = counter;
+const store = createStore(reducer);
 
-const updateText = () =>{
-  num.innerText = counter;
-}
+console.log(store.getState());
 
-const handleAdd=()=>{
-  counter = counter + 1;
-  updateText();
-}
-const handleMinus=()=>{
-  counter = counter - 1;
-  updateText();
-}
-add.addEventListener ("click", handleAdd);
-minus.addEventListener("click",handleMinus);
+store.dispatch({type:"ADD"});
