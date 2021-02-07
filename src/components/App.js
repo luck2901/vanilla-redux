@@ -8,6 +8,6 @@ function App(){
         <Route path = "/" exact component={Home}></Route>
         <Route path = "/:id" component={Detail}></Route>
     </Router>
-}
+} 
 
 export default App;
